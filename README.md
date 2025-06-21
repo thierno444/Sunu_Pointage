@@ -39,7 +39,7 @@ Ce projet permet aux **apprenants** et **employés** de pointer leur présence �
 - **Backend** : Laravel
 - **Base de données** : MongoDB (peut être adaptée à d'autres SGBD)
 - **Matériel embarqué** :
-  - Microcontrôleur (ex: PIC16F877A)
+  - Microcontrôleur (Arduino Uno)
   - Lecteur RFID
   - Servomoteur (porte)
   - LEDs & Buzzer
@@ -67,3 +67,68 @@ Ce projet permet aux **apprenants** et **employés** de pointer leur présence �
 cd pointage-frontend
 npm install
 ng serve
+
+### 🖥️ Backend (Laravel)
+
+cd pointage-backend
+composer install
+php artisan migrate
+php artisan serve
+
+🧪 Matériel Électronique
+Connecter le microcontrôleur au :
+
+Lecteur RFID
+
+LEDs
+
+Buzzer
+
+Servomoteur
+
+Configurer la communication série avec le backend.
+
+🧭 Utilisation
+Démarrer le frontend et le backend.
+
+Connecter et alimenter le matériel électronique.
+
+Accéder à l'interface web.
+
+Utilisateurs : pointer via carte RFID.
+
+Admin/Vigile : gérer, consulter et superviser les accès.
+
+💡 Fonctionnalités Avancées
+Gestion des congés :
+
+Désactivation automatique des cartes RFID pendant les congés.
+
+Réactivation automatique via script planifié (ex: cron).
+
+Historique graphique des pointages avec filtres temporels.
+
+📁 Livrables
+🧠 Mindmap du projet (Miro)
+
+🎨 Maquettes et mockups (Figma)
+
+⚡ Circuit électronique complet et documenté.
+
+💾 Code source (frontend, backend, microcontrôleur).
+
+📖 Documentation technique & utilisateur.
+
+🖥️ Présentation PowerPoint du projet.
+
+👨‍💻 Auteurs
+
+Thierno Ngom — tngom1010@gmail.com
+
+Mame Khady Laye Diaw — makhadypro@gmail.com
+
+Fatou Bintou Sané — bintousane69@gmail.com
+
+
+
+
