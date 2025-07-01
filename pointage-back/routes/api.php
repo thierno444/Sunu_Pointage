@@ -136,6 +136,27 @@ Route::prefix('pointages')->group(function () {
     Route::get('/', [PointageController::class, 'index']);
     Route::get('/historique', [PointageController::class, 'historique']);
 
+//     Exemple sans filtre utilisateur ni type :
+// json
+// Copier
+// Modifier
+// {
+//   "debut": "2024-06-01",
+//   "fin": "2024-06-30"
+// }
+// 💡 Exemple avec tous les filtres :
+// json
+// Copier
+// Modifier
+// {
+//   "debut": "2024-06-01",
+//   "fin": "2024-06-30",
+//   "user_id": "666a5d4c6b6a0b17dcb71e2e",
+//   "type": "retard",
+//   "per_page": 10
+// }
+// 🔁 Tu peux remplacer "retard" par "absence" selon le test voulu.
+
     // Routes spécifiques Vigile
     Route::post('/cartes/{cardId}/valider', [PointageController::class, 'validerPointage']);
 

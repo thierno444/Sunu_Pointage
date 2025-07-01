@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\JsonResponse;
+use App\Http\Resources\PointageResource;
+
 
 
 class PointageController extends Controller
@@ -268,45 +270,7 @@ class PointageController extends Controller
         ]);
     }
 
-    /**
-     * Liste des pointages avec filtres optionnels
-     * @param Request $request
-     * @return JsonResponse
-     */
-
-
-    //  public function index(Request $request)
-    //  {
-    //      $query = Pointage::query();
-
-    //      // Filtre par date
-    //      if ($date = $request->input('date')) {
-    //          $query->whereDate('date', Carbon::parse($date));
-    //      }
-
-    //      // Filtre par utilisateur
-    //      if ($userId = $request->input('user_id')) {
-    //          $query->where('user_id', $userId);
-    //      }
-
-    //      // Récupération des résultats sans pagination
-    //      $pointages = $query->with(['user', 'vigile'])->get();
-
-    //      $this->createLog('consultation_pointages', [
-    //          'filtres' => [
-    //              'date' => $date,
-    //              'user_id' => $userId
-    //          ],
-    //          'nombre_resultats' => $pointages->count()
-    //      ]);
-
-    //      return response()->json([
-    //          'status' => true,
-    //          'data' => $pointages
-    //      ]);
-
-    //     }
-
+    
     public function index(Request $request)
 {
     try {
@@ -324,7 +288,7 @@ class PointageController extends Controller
 
         // Récupération des pointages avec les relations
         $pointages = $query->with(['user' => function($query) {
-                $query->select('_id', 'nom', 'prenom', 'matricule', 'cardId','type','telephone');
+                 $query->select('_id', 'nom', 'prenom', 'matricule', 'cardId', 'type', 'telephone', 'email');
             },
             'vigile' => function($query) {
                 $query->select('_id', 'nom', 'prenom');
@@ -586,10 +550,10 @@ public function getPointagesJour()
         'nombre_resultats' => $pointages->count()
     ]);
 
-    return response()->json([
-        'status' => true,
-        'data' => $pointages
-    ]);
+   return response()->json([
+    'status' => true,
+    'data' => PointageResource::collection($pointages)
+]);
 }
 
 

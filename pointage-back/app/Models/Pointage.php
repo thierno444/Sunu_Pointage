@@ -46,15 +46,15 @@ class Pointage extends Model
     // Relation avec l'utilisateur qui pointe
     public function utilisateur()
     {
-        return $this->belongsTo(Utilisateur::class, 'user_id','_id')
-                    ->where('cardId', $this->cardId);
+        return $this->belongsTo(Utilisateur::class, 'user_id', '_id');
     }
+
 
     public function user()
     {
         return $this->belongsTo(Utilisateur::class, 'user_id','_id');
     }
-
+ 
 
     // Relation avec le vigile qui valide
     public function vigile()
