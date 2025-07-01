@@ -19,7 +19,12 @@
           "options": {
             "allowedCommonJsDependencies": [
               "bezier-easing",
-              "apexcharts"
+              "apexcharts",
+              "file-saver",
+              "canvg",
+              "raf",
+              "rgbcolor",
+              "core-js"
             ],
             "outputPath": "dist",
             "index": "src/index.html",

@@ -330,8 +330,8 @@ showErrorMessage: boolean = false; // 👈 AJOUTER CETTE LIGNE
     });
 
     if (employe.fonction === 'DG' || employe.fonction === 'Vigile') {
-      this.employeForm.get('password')?.enable();
-      this.showPasswordField = true;
+      // this.employeForm.get('password')?.disable();
+      // this.showPasswordField = true;
     } else {
       this.employeForm.get('password')?.disable();
       this.showPasswordField = false;
@@ -343,8 +343,8 @@ showErrorMessage: boolean = false; // 👈 AJOUTER CETTE LIGNE
   onRoleChange(event: any): void {
     const role = event.target.value;
     if (role === 'DG' || role === 'Vigile') {
-      this.employeForm.get('password')?.enable();
-      this.showPasswordField = true;
+      // this.employeForm.get('password')?.disable();
+      // this.showPasswordField = true;
     } else {
       this.employeForm.get('password')?.disable();
       this.showPasswordField = false;
@@ -492,9 +492,9 @@ updateEmploye(): void {
   };
 
   // ✅ Maintenant on peut ajouter le mot de passe
-  if (this.showPasswordField && this.employeForm.get('password')?.value) {
-    employeData.password = this.employeForm.get('password')?.value;
-  }
+  // if (this.showPasswordField && this.employeForm.get('password')?.value) {
+  //   employeData.password = this.employeForm.get('password')?.value;
+  // }
   
   console.log('Données JSON envoyées:', employeData);
 
@@ -557,9 +557,9 @@ private updateEmployeWithPhoto(): void {
   formData.append('fonction', this.employeForm.get('fonction')?.value || '');
   
   // Mot de passe si nécessaire
-  if (this.showPasswordField && this.employeForm.get('password')?.value) {
-    formData.append('password', this.employeForm.get('password')?.value);
-  }
+  // if (this.showPasswordField && this.employeForm.get('password')?.value) {
+  //   formData.append('password', this.employeForm.get('password')?.value);
+  // }
   
   // 🖼️ Ajouter la photo
   if (this.selectedPhoto) {

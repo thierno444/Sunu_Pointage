@@ -41,34 +41,33 @@ export class DefaultComponent implements OnInit {
   recentOrder = tableData;
 
   AnalyticEcommerce = [
-    {
-      title: 'Total Employers',
-      amount: '0'
-    },
-    {
-      title: 'Total Cohortes',
-      amount: '0'
-    },
-    {
-      title: 'Total Absence',
-      amount: '0',
+  {
+    title: 'Total Employés',
+    amount: '0'
+  },
+  {
+    title: 'Total Cohortes',
+    amount: '0'
+  },
+  {
+    title: 'Total Absences',
+    amount: '0'
+  },
+  {
+    title: 'Total Étudiants',
+    amount: '0'
+  },
+  {
+    title: 'Total Départements',
+    amount: '0'
+  },
+  {
+    title: 'Total Présence',
+    amount: '0'
+  }
+];
 
-    },
-    {
-      title: 'Total Etudiants',
-      amount: '300',
 
-    },
-    {
-      title: 'Total Departements',
-      amount: '0',
-
-    }, {
-      title: 'Total Presence',
-      amount: '0',
-
-    }
-  ];
   employesCount: number;
   apprenantsCount: number;
    filteredPointages: Pointage[] = [];
@@ -82,14 +81,16 @@ export class DefaultComponent implements OnInit {
 
 
   updateStatistics(): void {
-    this.countPresent = this.filteredPointages.filter(p => p.estPresent && !p.estRetard).length;
-    this.AnalyticEcommerce[5].amount = `${this.countPresent}`;
+  // Compte tous ceux qui sont présents (retards inclus)
+  this.countPresent = this.filteredPointages.filter(p => p.estPresent).length;
+  this.countAbsent = this.filteredPointages.filter(p => !p.estPresent).length;
+
+  // Met à jour les cartes correspondantes
+  this.AnalyticEcommerce[5].amount = `${this.countPresent}`;  // "Total Présence"
+  this.AnalyticEcommerce[2].amount = `${this.countAbsent}`;   // "Total Absence"
+}
 
 
-    this.countAbsent = this.filteredPointages.filter(p => !p.estPresent && !p.estRetard).length;
-    this.AnalyticEcommerce[2].amount = `${this.countAbsent}`;
-
-  }
 
   ngOnInit(): void {
     // Fetch the number of cohortes
@@ -141,7 +142,16 @@ export class DefaultComponent implements OnInit {
     });
 
 
-
+    this.apiService.getPointages().subscribe({
+      next: (pointages: Pointage[]) => {
+        console.log('Pointages récupérés:', pointages); // <-- Ajout pour debug
+        this.filteredPointages = pointages;
+        this.updateStatistics(); // met à jour les totaux presence/absence
+      },
+      error: (err) => {
+        console.error("Erreur lors de la récupération des pointages:", err);
+      }
+    });
 
   }
 }
