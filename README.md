@@ -1,136 +1,134 @@
-SunuPointage
+# 🎯 SunuPointage
 
-Description
+**SunuPointage** est un système intelligent de gestion de pointage conçu pour les structures de formation. Il intègre une technologie RFID, une interface intuitive et une électronique embarquée pour assurer un suivi précis des présences, absences et retards, tout en optimisant l’accès sécurisé aux locaux.
 
-SunuPointage est un projet visant à améliorer le système de pointage des employés et des apprenants dans une structure de formation. Le système utilise des cartes RFID pour gérer les accès, enregistrer les présences, suivre les absences et retards, tout en fournissant une interface utilisateur intuitive pour les administrateurs, vigiles et utilisateurs.
+---
 
-Fonctionnalités Clés
+## 📝 Description du Projet
 
-Utilisateur Simple (Employé et Apprenant)
+Ce projet permet aux **apprenants** et **employés** de pointer leur présence à l’aide de **cartes RFID**, tout en offrant aux **administrateurs** et **vigiles** une interface web moderne pour superviser, gérer et historiser les accès.
 
-Utilisation d'une carte RFID pour :
+---
 
-Pointer leur présence.
+## 🚀 Fonctionnalités Clés
 
-Ouvrir la porte automatiquement (se referme après 10 secondes).
+### 👤 Utilisateurs (Apprenants & Employés)
+- Pointage rapide via carte RFID.
+- Ouverture automatique de la porte (fermeture après 10 secondes).
+- Indicateurs visuels et sonores (LED & buzzer) pour feedback instantané.
 
-Indicateurs visuels et sonores pour confirmer ou refuser l'accès.
+### 🛡️ Vigile
+- Connexion sécurisée par email/mot de passe.
+- Vérification des identités (photo, nom, prénom, matricule).
+- Contrôle manuel de l’ouverture/fermeture des portes via interface.
 
-Vigile
+### 🧑‍💼 Administrateur
+- Gestion complète des utilisateurs :
+  - Ajout, modification, suppression, blocage.
+  - Import en masse via fichiers CSV.
+- Attribution et gestion des cartes RFID.
+- Modification des pointages (absences justifiées, congés, etc.).
+- Visualisation détaillée des historiques :
+  - Journaliers, hebdomadaires et mensuels (absences & retards).
 
-Connexion via email et mot de passe.
+---
 
-Validation des pointages en vérifiant les informations affichées (photo, nom, prénom, matricule).
+## 🧰 Technologies Utilisées
 
-Ouverture et fermeture de la porte via l'interface.
+- **Frontend** : Angular
+- **Backend** : Laravel
+- **Base de données** : MongoDB (peut être adaptée à d'autres SGBD)
+- **Matériel embarqué** :
+  - Microcontrôleur (Arduino Uno)
+  - Lecteur RFID
+  - Servomoteur (porte)
+  - LEDs & Buzzer
 
-Administrateur
+- **Outils de conception & gestion** :
+  - Figma (maquettes & prototypes)
+  - Trello (gestion agile du projet)
 
-Gestion des employés et apprenants :
+---
 
-Ajouter, modifier, supprimer et bloquer des utilisateurs.
+## ⚙️ Prérequis
 
-Importer des utilisateurs via des fichiers CSV.
+- `Node.js` & `npm` pour le frontend.
+- `PHP` & `Composer` pour le backend.
+- MongoDB (ou serveur MySQL selon adaptation).
+- Matériel électronique correctement câblé (RFID, servo, etc.).
 
-Attribution et gestion des cartes RFID.
+---
 
-Consultation et modification des pointages (en cas de congé, maladie, etc.).
+## 📦 Installation
 
-Visualisation de l'historique des absences et retards par jour, semaine et mois.
+### 🔧 Frontend (Angular)
 
-Technologies Utilisées
-
-Frontend : Angular
-
-Backend : Laravel
-
-Base de données : MongoDB (adaptable selon les besoins)
-
-Matériel électronique :
-
-Microcontrôleur (ex : PIC16F877A)
-
-Lecteur RFID
-
-Servomoteur pour contrôler l'ouverture de la porte
-
-LEDs et buzzer pour feedback utilisateur
-
-Outils de développement :
-
-Figma pour les maquettes et prototypes
-
-Trello pour la gestion agile
-
-Prérequis
-
-Node.js et npm installés pour le frontend.
-
-PHP et Composer pour le backend.
-
-Serveur MySQL ou MongoDB configuré.
-
-Matériel RFID et équipement électronique connectés.
-
-Installation
-
-Frontend
-
+```bash
 cd pointage-frontend
 npm install
 ng serve
 
-Backend
+### 🖥️ Backend (Laravel)
 
-cd pointage-backend 
+cd pointage-backend
 composer install
 php artisan migrate
 php artisan serve
 
-Matériel
+🧪 Matériel Électronique
+Connecter le microcontrôleur au :
 
-Connectez le microcontrôleur au lecteur RFID, aux LEDs, au buzzer et au servomoteur selon le schéma fourni.
+Lecteur RFID
 
-Configurez les ports série pour communiquer avec le système backend.
+LEDs
 
-Utilisation
+Buzzer
 
-Lancez le frontend et le backend.
+Servomoteur
 
-Connectez le matériel au système.
+Configurer la communication série avec le backend.
 
-Accédez à l'interface utilisateur pour gérer les utilisateurs et superviser les pointages.
+🧭 Utilisation
+Démarrer le frontend et le backend.
 
-Les utilisateurs peuvent pointer en utilisant leur carte RFID.
+Connecter et alimenter le matériel électronique.
 
-Fonctionnalités Avancées
+Accéder à l'interface web.
 
+Utilisateurs : pointer via carte RFID.
+
+Admin/Vigile : gérer, consulter et superviser les accès.
+
+💡 Fonctionnalités Avancées
 Gestion des congés :
 
 Désactivation automatique des cartes RFID pendant les congés.
 
-Réactivation automatique à la fin des congés via un script planifié.
+Réactivation automatique via script planifié (ex: cron).
 
-Historique détaillé des pointages avec visualisation graphique.
+Historique graphique des pointages avec filtres temporels.
 
-Livrables
+📁 Livrables
+🧠 Mindmap du projet (Miro)
 
-Mindmap du projet.  lien: https://miro.com/welcomeonboard/UkcwUEtRSXdCWmlBcW0rSXkrby92U0hrSFBtV2J6em9nZUtsRzNjd0JaQjRTbjFDOWRWd1RRTGFkaXd1S0RMMGxCOVREZ2xkT1FVRGlZdEd5YVhSSFlrVDdzMzg0K3VJV2JhRUF6em4zYllxaXI2UzBHbklNR0FUdjhMMytqQlohZQ==?share_link_id=125439100865
+🎨 Maquettes et mockups (Figma)
 
-Maquette et mockups de l'application. lien: https://www.figma.com/proto/THlzSsG5fw9LHwTyUFKLOl/Sunu-Pointage?node-id=10-18&t=7thdpKHWaPCqW4RZ-0&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=10%3A18&show-proto-sidebar=1
+⚡ Circuit électronique complet et documenté.
 
-Circuit électronique correctement câblé.
+💾 Code source (frontend, backend, microcontrôleur).
 
-Code source (frontend, backend, microcontrôleur) sur GitHub.
+📖 Documentation technique & utilisateur.
 
-Documentation technique et utilisateur.
+🖥️ Présentation PowerPoint du projet.
 
-Présentation PowerPoint.
+👨‍💻 Auteurs
 
-Auteurs
+Thierno Ngom — tngom1010@gmail.com
 
-Mame Khady Laye Diaw ( makhadypro@gmail.com****************)
+Mame Khady Laye Diaw — makhadypro@gmail.com
 
-Fatou Bintou Sané ( bintousane69@gmail.com********)
+Fatou Bintou Sané — bintousane69@gmail.com
 
-Thierno Ngom (**tngom1010@gmail.com **)
+
+
+
