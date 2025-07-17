@@ -3,6 +3,7 @@ version: "3.8"
 services:
   backend:
     build: ./backend
+    container_name: sunupointage-backend
     ports:
       - "8000:8000"
     volumes:
@@ -12,28 +13,49 @@ services:
     depends_on:
       - mongo
     environment:
-      - DB_CONNECTION=mongodb
-      - DB_HOST=mongo
-      - DB_PORT=27017
+      DB_CONNECTION: mongodb
+      DB_HOST: cluster0.n8j3zik.mongodb.net
+      DB_PORT: 27017
+      DB_DATABASE: sunupointage
+      DB_USERNAME: thierno
+      DB_PASSWORD: Mamekhadime4@
+      DB_AUTH_SOURCE: admin
+    dns:
+      - 8.8.8.8
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - sunupointage-net
     restart: always
 
   frontend:
     build: ./frontend
+    container_name: sunupointage-frontend
     ports:
       - "4200:4200"
     volumes:
       - ./frontend:/app
     working_dir: /app
     command: npm start
+    dns:
+      - 8.8.8.8
+    networks:
+      - sunupointage-net
     restart: always
 
   mongo:
     image: mongo
+    container_name: sunupointage-mongo
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - sunupointage-net
     restart: always
 
 volumes:
   mongo-data:
+
+networks:
+  sunupointage-net:

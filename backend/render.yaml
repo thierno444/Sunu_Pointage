@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: sunupointage-backend
+    env: php
+    plan: free
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      php artisan config:cache
+    startCommand: php artisan serve --host 0.0.0.0 --port 10000
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        generateValue: true
+      - key: DB_CONNECTION
+        value: mongodb
+      - key: DB_HOST
+        value: cluster0.n8j3zik.mongodb.net
+      - key: DB_PORT
+        value: 27017
+      - key: DB_DATABASE
+        value: sunupointage
+      - key: DB_USERNAME
+        value: thierno
+      - key: DB_PASSWORD
+        value: Mamekhadime4@
+      - key: DB_AUTH_SOURCE
+        value: admin
